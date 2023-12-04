@@ -1,4 +1,5 @@
 def addProduct():
+    
     productId = int(input("Enter the Product Id: "))
     productName = input("Enter the Product Name: ")
     quantity = int(input("Enter the Quantity: "))
@@ -49,6 +50,7 @@ def searchProductById(pId, productId):
     ind=productId.index(pId)
     return ind
 
+
     
 def main():
     print("""
@@ -60,45 +62,76 @@ Contact us: Shreya - 9999999999
 Let's get started!""")
     
     x = selection()
-
-    productId=(1 , 2 , 3)
-    productName=["Shoes", "Flour" , "Skirt"]
-    quantity=[10, 9, 6]
-    price=[20000, 300 , 5000]
-    productCategoryName=["Sports", "Home and Kitchen", "Fashion"]
+    product = [
+        {
+            "productId": 1,
+            "productName": "Shoes",
+            "quantity": 10,
+            "price": 20000,
+            "productCategoryName": "Sports"
+        },
+        {
+            "productId": 2,
+            "productName": "Flour",
+            "quantity": 9,
+            "price": 300,
+            "productCategoryName": "Home and Kitchen"
+        },
+        {
+            "productId": 3,
+            "productName": "Skirt",
+            "quantity": 6,
+            "price": 5000,
+            "productCategoryName": "Fashion"
+        }
+    ]
     
     if x == 1:
         pId,pName,qty,priceX,pCName = addProduct()
 
-        productId=productId+(pId,)
-        productName.append(pName)
-        quantity.append(qty)
-        price.append(priceX)
-        productCategoryName.append(pCName)
+        new_product = {
+            "productId": pId,
+            "productName": pName,
+            "quantity": qty,
+            "price": priceX,
+            "productCategoryName": pCName
 
-        print(f""" You have added the product
-            Product Id: {pId}
-            Product Name: {pName}
-            Quantity: {qty}
-            Price: {priceX}
-            Product Category: {pCName}
-            """)
+        }
+
+        product.append(new_product)
+
+        print(f"""
+            You have added the product 
+              {new_product}
+              """)
+
+        # displayProduct(new_prod
+
+
+        # print(f""" You have added the product
+        #     Product Id: {pId}
+        #     Product Name: {pName}
+        #     Quantity: {qty}
+        #     Price: {priceX}
+        #     Product Category: {pCName}
+        #     """)
         checkStockQuantity(qty)
     
-    elif x == 2:
-        pId=int(input("Enter the product Id: "))
+    # elif x == 2:
+    #     pId=int(input("Enter the product Id: "))
 
-        ind = searchProductById(pId, productId)
-        print(f"""
-            Product details: 
-            Product Id: {pId}
-            Product Name: {productName[ind]}
-            Quantity: {quantity[ind]}
-            Price: {price[ind]}
-            Product Category: {productCategoryName[ind]}
-              """)
+        # ind = searchProductById(pId, productId)
+        # print(f"""
+        #     Product details: 
+        #     Product Id: {pId}
+        #     Product Name: {productName[ind]}
+        #     Quantity: {quantity[ind]}
+        #     Price: {price[ind]}
+        #     Product Category: {productCategoryName[ind]}
+        #       """)
 
     else:
         print("wrong input")
         
 main()
+
